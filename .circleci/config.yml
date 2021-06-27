@@ -40,13 +40,12 @@ jobs:
       - restore_cache:
           keys: 
       - run:
-          name: builfrontend
+          name: 
           command: |
              cd frontend
              npm run build
              cd dist
              ls
-            exit 1
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-build
