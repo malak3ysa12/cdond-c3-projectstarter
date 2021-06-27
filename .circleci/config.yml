@@ -38,9 +38,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-build]
+          keys: 
       - run:
-          name: [Build front-end]
+          name: builfrontend
           command: |
              cd frontend
              npm run build
@@ -57,7 +57,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build]
+          keys: 
       - run:
           name: [Back-end build]
           command: |
