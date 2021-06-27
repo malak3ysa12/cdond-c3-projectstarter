@@ -58,8 +58,8 @@ jobs:
       - restore_cache:
           keys: 
       - run:
-          name: Back
-          command: |
+        name: 
+        command: |
                cd backend
                npm run build
              exit 1
