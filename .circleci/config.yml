@@ -12,7 +12,6 @@ commands:
           command: |
               aws delete-stack --stack-name udacityStack;
             exit 1
-
   revert-migrations:
     description: Revert the last migration if successfully run in the current workflow.
     parameters:
