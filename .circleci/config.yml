@@ -10,8 +10,7 @@ commands:
           name: Destroy environments
           when: on_fail
           command: |
-              aws delete-stack --stack-name udacityStack;
-            exit 1
+          exit 1
 
   revert-migrations:
     description: Revert the last migration if successfully run in the current workflow.
@@ -26,10 +25,9 @@ commands:
             SUCCESS = 1
             if(( $SUCCESS==1 )); 
             then
-              cd backend
-              npm run migrations:revert
-              cd backend
-              npm run migrations:revert
+            #  cd ~/project/backend
+            #  npm install
+            #  Add revert code here. You can find this in the Getting Started section.
               exit 1
             fi
             
@@ -45,9 +43,7 @@ jobs:
           name: Build front-end
           command: |
              cd frontend
-             npm run build
-             cd dist
-             ls
+             npm install --save
             exit 1
       - save_cache:
           paths: [frontend/node_modules]
@@ -63,8 +59,8 @@ jobs:
       - run:
           name: Back-end build
           command: |
-               cd backend
-               npm run build
+               cd frontend
+               npm install --save
              exit 1
       - save_cache:
           paths: [backend/node_modules]
