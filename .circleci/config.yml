@@ -85,19 +85,34 @@ jobs:
             
   scan-frontend:
     docker:
-      # Docker image here
+      - image: circleci/node:13.8.0
     steps:
-      # Checkout code from git
+      - checkout
+      - restore_cache:
+         keys: [frontend-build]
+      - run: 
+          name: scan frontend dependencies
+          command: |
+             cd frontend
+             npm install
+             npm audit  --audit-level=critical  || true
+      
       # Restore from cache
       # Your job code here
 
   scan-backend:
     docker:
-      # Docker image here
+       - image: circleci/node:13.8.0
     steps:
-      # Checkout code from git
-      # Restore from cache
-      # Your job code here
+      - checkout
+      - restore_cache:
+         keys: [frontend-build]
+      - run: 
+          name: scan frontend dependencies
+          command: |
+             cd backend
+             npm install
+             npm audit  --audit-level=critical  || true
   deploy-infrastructure:
     docker:
        - image: amazon/aws-cli 
