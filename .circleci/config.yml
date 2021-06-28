@@ -10,7 +10,6 @@ commands:
           name: Destroy environments
           when: on_fail
           command: |
-            exit 1
   revert-migrations:
     description: Revert the last migration if successfully run in the current workflow.
     parameters:
@@ -28,7 +27,6 @@ commands:
               npm run migrations:revert
               cd backend
               npm run migrations:revert
-              exit 1
             fi
             
 jobs:
@@ -144,13 +142,11 @@ jobs:
             aws cloudformation deploy \
               --template-file .circleci/files/frontend.yml \
               --tags project=your-tag \
-               --stack-name "front-end stack "   
-              exit 1
+               --stack-name "front-end stack "
       - run:
           name: Add back-end ip to ansible inventory
           command: |
             # Your code here
-            exit 1
       - persist_to_workspace:
           root: ~/
           paths:
@@ -181,12 +177,10 @@ jobs:
           name: Run migrations
           command: |
             # Your code here
-            exit 1
       - run:
           name: Send migration results to memstash
           command: |
             # Your code here
-            exit 1
      # Here's where you will add some code to rollback on failure      
 
   deploy-frontend:
