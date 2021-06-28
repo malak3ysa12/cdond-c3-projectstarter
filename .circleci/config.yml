@@ -191,41 +191,35 @@ jobs:
 
   deploy-frontend:
     docker:
-      - image: amazon/aws-cli
+      - image: python:3.7-alpine3.11
     steps:
-      # Checkout code from git
+      - checkout
+      - add_ssh_keys:
+          fingerprints: ["06:7c:db:71:49:2f:03:36:60:08:d2:fd:33:6f:17:d3"] # You can get this ID in the section where you registered the SSH Key
       - run:
           name: Install dependencies
           command: |
-            # your code here
+            apk add --update ansible # install the dependencies needed for your playbook
       - run:
-          name: Get backend url
+          name: Configure server
           command: |
-            # your code here
-            export API_URL="http://${BACKEND_IP}:3030"
-            echo "${API_URL}"
-      - run:
-          name: Deploy frontend objects
-          command: |
-            # your code here
-      # Here's where you will add some code to rollback on failure      
+            ansible-playbook -i inventory.txt frontend.yml
                     
   deploy-backend:
     docker:
-      # Docker image here that supports Ansible
+      - image: python:3.7-alpine3.11
     steps:
-      # Checkout code from git
-      # Add ssh keys with fingerprint
-      # attach workspace
+      - checkout
+      - add_ssh_keys:
+          fingerprints: ["06:7c:db:71:49:2f:03:36:60:08:d2:fd:33:6f:17:d3"] # You can get this ID in the section where you registered the SSH Key
       - run:
           name: Install dependencies
           command: |
-            # your code here
+            apk add --update ansible # install the dependencies needed for your playbook
       - run:
-          name: Deploy backend
+          name: Configure server
           command: |
-            # your code here
-      # Here's where you will add some code to rollback on failure  
+            ansible-playbook -i inventory.txt backend.yml 
 
   smoke-test:
     docker:
