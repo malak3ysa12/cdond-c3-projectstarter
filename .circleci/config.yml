@@ -92,6 +92,7 @@ jobs:
           name: Install dependencies
           command: |
             cd frontend
+            npm install
             npm audit fix
             npm audit fix --audit-level=critical --force
   test-backend:
