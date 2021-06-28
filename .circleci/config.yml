@@ -124,11 +124,11 @@ jobs:
              cd backend
              npm install
              npm audit  --audit-level=critical  || true
+             
   deploy-infrastructure:
     docker:
        - image: amazon/aws-cli
-    steps:
-      - Checkout 
+    steps: 
       - run: yum -y install tar gzip
       - run: 
           name: Ensure back-end infrastructure exists
