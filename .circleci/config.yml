@@ -78,6 +78,7 @@ jobs:
           name: scan frontend dependencies
           command: |
             cd frontend
+            npm i
             npm run test
                 
   test-backend:
@@ -91,6 +92,7 @@ jobs:
           name: scan backtend dependencies
           command: |
             cd backend
+            npm i
             npm run test
   scan-frontend:
     docker:
