@@ -185,7 +185,6 @@ jobs:
                 --query 'Reservations[*].Instances[*].PublicIpAddress' \
                 --filters "Name=tag:Name,Values=backend-$CIRCLE_WORKFLOW_ID" \
                 --output text >> ~/project/.circleci/ansible/inventory.txt
-                aws configure set  "Default region name" us-west-2
                 cat .circleci/ansible/inventory.txt
       - persist_to_workspace:
           root: ~/
@@ -221,7 +220,6 @@ jobs:
                 --output text >> ~/project/.circleci/ansible/inventory.txt
             cat .circleci/ansible/inventory.txt
             cd .circleci/ansible
-            aws configure set  "Default region name" us-west-2
             ansible-playbook -i inventory.txt  configure-server.yml
       - run:
           name: Configure node-exporter
@@ -232,7 +230,6 @@ jobs:
             #     --output text >> ~/project/.circleci/ansible/inventory.txt
             cat .circleci/ansible/inventory.txt
             cd .circleci/ansible
-            aws configure set  "Default region name" us-west-2
             ansible-playbook -i inventory.txt  configure-prometheus-node-exporter.yml
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID}
