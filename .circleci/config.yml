@@ -93,8 +93,6 @@ jobs:
           command: |
             cd frontend
             npm install
-            npm audit fix --force
-            npm run test
   test-backend:
     docker:
       - image: circleci/node:13.8.0
