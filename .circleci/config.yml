@@ -184,6 +184,7 @@ jobs:
                 --query 'Reservations[*].Instances[*].PublicIpAddress' \
                 --filters "Name=tag:Name,Values=backend-$CIRCLE_WORKFLOW_ID" \
                 --output text >> ~/project/.circleci/ansible/inventory.txt
+                aws configure set  "Default region name" "us-west-2"
                 cat .circleci/ansible/inventory.txt
       - persist_to_workspace:
           root: ~/
@@ -200,7 +201,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["11:b4:9d:73:c1:1a:2c:1e:af:2d:b0:8c:24:87:e3:db"]
+          fingerprints: ["73:a7:60:35:b7:bb:cf:71:a7:e5:87:cf:d7:30:6c:a3:cb:78:30:19"]
       - attach_workspace:
           at: ~/project
       - run:
