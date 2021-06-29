@@ -286,7 +286,8 @@ jobs:
 
 
   deploy-frontend:
-    <<: *defaults1
+    docker:
+      - image: python:3.7-alpine3.11
     steps:
       - checkout
       - run:
@@ -321,7 +322,8 @@ jobs:
 
                     
   deploy-backend:
-    <<: *defaults2
+    docker:
+      - image: python:3.7-alpine3.11
     steps:
       - checkout
       - add_ssh_keys:
