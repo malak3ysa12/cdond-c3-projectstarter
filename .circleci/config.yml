@@ -304,7 +304,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "cc:3d:5e:6a:33:b4:b0:71:b6:de:bb:83:b5:02:a0:48"
+            - "73:a7:60:35:b7:bb:cf:71:a7:e5:87:cf:d7:30:6c:a3:cb:78:30:19"
       - attach_workspace:
           at: .circleci/ansible/
       - store_artifacts: # See circleci.com/docs/2.0/artifacts/ for more details.
