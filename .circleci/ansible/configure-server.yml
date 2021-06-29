@@ -10,15 +10,15 @@
     - ansible_stdout_callback: yaml
     - ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 
-   environment:
-     ENVIRONMENT: Production
-     TYPEORM_CONNECTION: postgres
-     TYPEORM_ENTITIES: ./src/modules/domain/**/*.entity.ts
-     TYPEORM_HOST: udacityproject3.cnhuhj8yqdz0.us-west-2.rds.amazonaws.com
-     TYPEORM_PORT: 5432
-     TYPEORM_USERNAME: postgres
-     TYPEORM_PASSWORD: TyhMYQS111tZe3drgx4L
-     TYPEORM_DATABASE: postgres
+ #  environment:
+ #    ENVIRONMENT: Production
+ #    TYPEORM_CONNECTION: postgres
+ #    TYPEORM_ENTITIES: ./src/modules/domain/**/*.entity.ts
+ #    TYPEORM_HOST: udacityproject3.cnhuhj8yqdz0.us-west-2.rds.amazonaws.com
+ #    TYPEORM_PORT: 5432
+ #    TYPEORM_USERNAME: postgres
+ #    TYPEORM_PASSWORD: TyhMYQS111tZe3drgx4L
+ #   TYPEORM_DATABASE: postgres
 
   pre_tasks:
     - name: "wait 600 seconds for target connection to become reachable/usable."
