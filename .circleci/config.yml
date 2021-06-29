@@ -94,9 +94,7 @@ jobs:
           name: Install dependencies
           command: |
             cd frontend
-            npm audit fix
             npm install
-            npm run test
                 
   test-backend:
     <<: *defaults
