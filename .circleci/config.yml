@@ -97,17 +97,21 @@ jobs:
             npm install
                 
   test-backend:
-    <<: *defaults
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       - checkout
-      - restore_cache:
-          keys: [backend-build]
       - run:
-          name: Back-end test cases
+          name: test backend
           command: |
+            ls -ltr
             cd backend
-            npm install jest
-            npm run test
+            npm audit fix
+            npm audit fix --audit-level=critical --force
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: /tmp/reports/junit/
+      - store_test_results:
+          path: /tmp/reports/junit/
             
   scan-frontend:
     docker:
@@ -128,20 +132,18 @@ jobs:
             npm audit fix --audit-level=critical --force
 
   scan-backend:
-    <<: *defaults
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - restore_cache:
           keys: [backend-build]
       - run:
-          name: Scanning vulnerabilities audit for backend
+          name: Scan backend
           command: |
-            cd backend
+            cd ./backend
             npm i
-            npm run build
-            #npm audit fix --audit-level=critical --force
-            npm audit --audit-level=critical
-
+            npm audit fix --audit-level=critical --force
   deploy-infrastructure:
     <<: *defaults1
     steps:
