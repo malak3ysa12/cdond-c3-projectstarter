@@ -66,33 +66,37 @@ jobs:
           key: frontend-build
 
   build-backend:
-    <<: *defaults
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - restore_cache:
           keys: [backend-build]
       - run:
-          name: Back-end build
+          name: Build Backend
           command: |
             cd backend
-            npm i
-            npm run build
+            npm install
+            npm build
+            npm audit fix
       - save_cache:
           paths: [backend/node_modules]
           key: backend-build
 
   test-frontend:
-    <<: *defaults
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - restore_cache:
           keys: [frontend-build]
       - run:
-          name: Front-end test cases
+          name: Install dependencies
           command: |
             cd frontend
-            npm install jest
-            npm run test   
+            npm audit fix
+            npm install
+            npm run test
                 
   test-backend:
     <<: *defaults
@@ -108,17 +112,22 @@ jobs:
             npm run test
             
   scan-frontend:
-    <<: *defaults
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - restore_cache:
           keys: [frontend-build]
       - run:
-          name: Scanning vulnerabilities audit for frontend
+          name: Install dependencies
           command: |
             cd frontend
-            #npm audit fix --audit-level=critical --force
-            npm audit --audit-level=critical
+            npm install
+      - run:
+          name: auditing the packages
+          command: |
+            cd frontend
+            npm audit fix --audit-level=critical --force
 
   scan-backend:
     <<: *defaults
