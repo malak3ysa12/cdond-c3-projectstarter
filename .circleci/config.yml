@@ -195,12 +195,12 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "cc:3d:5e:6a:33:b4:b0:71:b6:de:bb:83:b5:02:a0:48"
-#      - attach_workspace:
- #         at: .circleci/ansible/
-  #    - run:
-   #       name: Install dependencies
-    #      command: |
-     #       apk add --update ansible
+      - attach_workspace:
+          at: .circleci/ansible/
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --update ansible
 #      - run:
  #         name: installation of pip and aws cli
   #        command: |
