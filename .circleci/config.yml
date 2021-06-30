@@ -220,6 +220,7 @@ jobs:
                 --output text >> ~/project/.circleci/ansible/inventory.txt
             cat .circleci/ansible/inventory.txt
             cd .circleci/ansible
+            export ansible_host_key_checking= false
             ansible-playbook -i inventory.txt  configure-server.yml
       - run:
           name: Configure node-exporter
@@ -230,6 +231,7 @@ jobs:
             #     --output text >> ~/project/.circleci/ansible/inventory.txt
             cat .circleci/ansible/inventory.txt
             cd .circleci/ansible
+            export ansible_host_key_checking= false
             ansible-playbook -i inventory.txt  configure-prometheus-node-exporter.yml
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID}
