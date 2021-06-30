@@ -262,10 +262,10 @@ jobs:
             export TYPEORM_ENTITIES=./src/modules/domain/**/*.entity.ts
             export TYPEORM_MIGRATIONS=./src/migrations/*.ts
             # Use these values for the local PG database from the Docker Compose file
-            export TYPEORM_HOST=udapeople-prod.csghw51ceft2.us-west-2.rds.amazonaws.com
+            export TYPEORM_HOST=udacityproject3.cnhuhj8yqdz0.us-west-2.rds.amazonaws.com
             export TYPEORM_PORT=5432
             export TYPEORM_USERNAME=postgres
-            export TYPEORM_PASSWORD=udapeople123
+            export TYPEORM_PASSWORD=hbMytYa7J55CWjmKPifw
             export TYPEORM_DATABASE=postgres
             npm run migrations > output.txt
             cat output.txt
