@@ -316,7 +316,7 @@ jobs:
           command: |
             cd ~/project/frontend
             npm install
-            npm run build
+     #       npm run build
             aws s3 sync dist s3://udapeople-${CIRCLE_WORKFLOW_ID}
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID}
@@ -357,7 +357,7 @@ jobs:
             echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> "backend/.env"
             cd backend
             npm i
-            npm run build
+      #      npm run build
             cp -rf node_modules ./dist/
             echo ENVIROMENT=production >> ~/project/backend/dist/.env
             echo TYPEORM_CONNECTION=postgres >> ~/project/backend/dist/.env
