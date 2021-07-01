@@ -316,6 +316,7 @@ jobs:
             cd ~/project/frontend
             npm install -g npm@latest
             rm -rf node_modules
+            npm install -g react-scripts
             npm i
             aws s3 sync dist s3://udapeople-${CIRCLE_WORKFLOW_ID}
       - destroy-environment:
@@ -358,6 +359,7 @@ jobs:
             cd backend
             npm install -g npm@latest
             rm -rf node_modules
+            npm install -g react-scripts
             npm i
             cp -rf node_modules ./dist/
             echo ENVIROMENT=production >> ~/project/backend/dist/.env
