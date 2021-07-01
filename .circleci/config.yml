@@ -269,8 +269,6 @@ jobs:
             export TYPEORM_PASSWORD=hbMytYa7J55CWjmKPifw
             export TYPEORM_DATABASE=postgres
             npm install -g npm@latest
-            rm -rf node_modules
-            npm install -g react-scripts
             npm i
             npm run migrations > output.txt
             cat output.txt
