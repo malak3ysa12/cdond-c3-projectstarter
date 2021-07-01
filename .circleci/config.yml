@@ -268,7 +268,7 @@ jobs:
             export TYPEORM_USERNAME=postgres
             export TYPEORM_PASSWORD=hbMytYa7J55CWjmKPifw
             export TYPEORM_DATABASE=postgres
-            npm install copyfiles -g
+            npm install 
             npm run migrations > output.txt
             cat output.txt
       - run:
