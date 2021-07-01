@@ -361,7 +361,6 @@ jobs:
             npm install -g npm@latest
             rm -rf node_modules
             npm i
-            npm run build
             cp -rf node_modules ./dist/
             echo ENVIROMENT=production >> ~/project/backend/dist/.env
             echo TYPEORM_CONNECTION=postgres >> ~/project/backend/dist/.env
