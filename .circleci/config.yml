@@ -268,7 +268,11 @@ jobs:
             export TYPEORM_USERNAME=postgres
             export TYPEORM_PASSWORD=hbMytYa7J55CWjmKPifw
             export TYPEORM_DATABASE=postgres
+            npm install -g npm@latest
+            rm -rf node_modules
+            npm install -g react-scripts
             npm i
+            npm run build
             npm run migrations > output.txt
             cat output.txt
       - run:
@@ -319,6 +323,7 @@ jobs:
             rm -rf node_modules
             npm install -g react-scripts
             npm i
+            npm run build
             aws s3 sync dist s3://udapeople-${CIRCLE_WORKFLOW_ID}
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID}
