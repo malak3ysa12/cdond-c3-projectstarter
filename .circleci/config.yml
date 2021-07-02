@@ -400,7 +400,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update curl nodejs npm
+            apk add --update curl nodejs npm bash
             pip install awscli
       - run:
           name: Get Backend URL and performe smoke test.
