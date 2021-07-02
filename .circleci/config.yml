@@ -298,7 +298,7 @@ jobs:
           name: Install dependencies
           command: |
             apk add --update tar gzip curl  
-            curl -sL https://rpm.nodesource.com/setup_13.x | sh
+            curl -sL https://rpm.nodesource.com/setup_13.x | bash
              apk add --update nodejs
       - run:
           name: Get backend url
