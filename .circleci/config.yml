@@ -289,41 +289,52 @@ jobs:
           workflow_id: ${CIRCLE_WORKFLOW_ID}
 
 
-  deploy-frontend:
+   deploy-frontend:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: amazon/aws-cli
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: |
-            apk add --update tar gzip curl  
-            curl -sL https://rpm.nodesource.com/setup_13.x -o /tmp/.myscript.${timestamp}.tmp
-            bash /tmp/.myscript.${timestamp}.tmp
-            apk add --update nodejs
+            yum install tar -y
+            yum install gzip -y
+            yum install python3-pip -y
+            yum -y install curl -y
+            curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+            yum install -y nodejs
       - run:
           name: Get backend url
           command: |
             export BACKEND_IP=$(aws ec2 describe-instances \
-              --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID}" \
-              --query 'Reservations[*].Instances[*].PublicIpAddress' \
-              --output text)
+            --query 'Reservations[*].Instances[*].PublicIpAddress' \
+            --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
+            --output text)
+            echo $BACKEND_IP > .circleci/ansible/backendip
+            cd frontend
             export API_URL="http://${BACKEND_IP}:3030"
-            echo "${API_URL}"
-            echo "API_URL=${API_URL}" >> ~/project/frontend/.env
-            echo "NODE_ENV=production" >> ~/project/frontend/.env
-            echo "ENVIRONMENT=production" >> ~/project/frontend/.env
+            echo "${API_URL}" 
+            npm install 
+            npm run build
+      - persist_to_workspace:
+          root: .circleci/ansible/
+          paths:
+            - backendip
+      - store_artifacts: # See circleci.com/docs/2.0/artifacts/ for more details.
+          path: .circleci/ansible/backendip
+      - run:
+          name: copy the s3 url
+          command: |
+            echo "http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-us-west-2.amazonaws.com" > ./.circleci/ansible/URL02S3
+      - store_artifacts: # See circleci.com/docs/2.0/artifacts/ for more details.
+          path: .circleci/ansible/URL02S3
       - run:
           name: Deploy frontend objects
           command: |
-            cd ~/project/frontend
-            npm install 
-            aws s3 sync dist s3://udapeople-${CIRCLE_WORKFLOW_ID}
-      - destroy-environment:
-          workflow_id: ${CIRCLE_WORKFLOW_ID}
-      - revert-migrations:
-          workflow_id: ${CIRCLE_WORKFLOW_ID}
-
+            aws s3 cp frontend/dist "s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7}" --recursive
+      - destroy-environment
+      - revert-migrations
+      # Here's where you will add some code to rollback on failure
                     
   deploy-backend:
     docker:
