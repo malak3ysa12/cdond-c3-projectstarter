@@ -356,7 +356,8 @@ jobs:
             echo TYPEORM_PASSWORD=$TYPEORM_PASSWORD >> "backend/.env"
             echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> "backend/.env"
             cd backend
-            npm install copyfiles -g
+            npm install
+            npm run build
             cp -rf node_modules ./dist/
             echo ENVIROMENT=production >> ~/project/backend/dist/.env
             echo TYPEORM_CONNECTION=postgres >> ~/project/backend/dist/.env
