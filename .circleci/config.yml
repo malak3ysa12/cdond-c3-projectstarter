@@ -297,9 +297,9 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            sudo apt-get install -y tar gzip
+            apk add --update tar gzip 
             curl -sL https://rpm.nodesource.com/setup_13.x | bash -
-            sudo apt-get install -y nodejs
+             apk add --update nodejs
       - run:
           name: Get backend url
           command: |
@@ -371,7 +371,7 @@ jobs:
             echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> ~/project/backend/dist/.env
             cat dist/.env
             tar -czvf app.tar.gz ./dist/*
-            cp app.tar.gz ~/project/.circleci/ansible/roles/deploy/files/
+            cp app.tar.gz ~/project/.circleci/ansible/roles/deploy/
             # ls
             # cd dist
             # ls
