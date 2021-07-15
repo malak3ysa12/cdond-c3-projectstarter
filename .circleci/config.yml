@@ -255,8 +255,8 @@ jobs:
           name: Run migrations
           command: |
             cd backend
-            export NODE_ENV=Production
-            export ENVIRONMENT=Production
+            export NODE_ENV=production
+            export ENVIRONMENT=production
             export VERSION=1
             export TYPEORM_CONNECTION=postgres
             export TYPEORM_MIGRATIONS_DIR=./src/migrations
@@ -346,6 +346,7 @@ jobs:
           name: Deploy backend
           no_output_timeout: 30m
           command: |
+            echo NODE_ENV=production >> "backend/.env"
             echo ENVIROMENT=production >> "backend/.env"
             echo TYPEORM_CONNECTION=postgres >> "backend/.env"
             echo TYPEORM_MIGRATIONS_DIR=./migrations >> "backend/.env"
@@ -360,6 +361,7 @@ jobs:
             npm install
             npm run build
             cp -rf node_modules ./dist/
+            echo NODE_ENV=production >> "backend/.env"
             echo ENVIROMENT=production >> ~/project/backend/dist/.env
             echo TYPEORM_CONNECTION=postgres >> ~/project/backend/dist/.env
             echo TYPEORM_MIGRATIONS_DIR=./migrations >> ~/project/backend/dist/.env
