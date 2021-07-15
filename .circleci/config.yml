@@ -260,7 +260,7 @@ jobs:
             export VERSION=1
             export TYPEORM_CONNECTION=postgres
             export TYPEORM_MIGRATIONS_DIR=./src/migrations
-            export TYPEORM_ENTITIES=./src/modules/domain/**/*.entity.ts
+            export TYPEORM_ENTITIES=./src/modules/**/*.entity.ts
             export TYPEORM_MIGRATIONS=./src/migrations/*.ts
             # Use these values for the local PG database from the Docker Compose2 file
             export TYPEORM_HOST=udacityproject3.cnhuhj8yqdz0.us-west-2.rds.amazonaws.com
@@ -349,7 +349,7 @@ jobs:
             echo ENVIROMENT=production >> "backend/.env"
             echo TYPEORM_CONNECTION=postgres >> "backend/.env"
             echo TYPEORM_MIGRATIONS_DIR=./migrations >> "backend/.env"
-            echo TYPEORM_ENTITIES=./modules/domain/**/*.entity.ts >> "backend/.env"
+            echo TYPEORM_ENTITIES=./src/modules/**/*.entity.ts >> "backend/.env"
             echo TYPEORM_MIGRATIONS=./migrations/*.ts >> "backend/.env"
             echo TYPEORM_HOST=$TYPEORM_HOST >> "backend/.env"
             echo TYPEORM_PORT=$TYPEORM_PORT >> "backend/.env"
@@ -363,7 +363,7 @@ jobs:
             echo ENVIROMENT=production >> ~/project/backend/dist/.env
             echo TYPEORM_CONNECTION=postgres >> ~/project/backend/dist/.env
             echo TYPEORM_MIGRATIONS_DIR=./migrations >> ~/project/backend/dist/.env
-            echo TYPEORM_ENTITIES=./modules/domain/**/*.entity.ts >> ~/project/backend/dist/.env
+            echo TYPEORM_ENTITIES=./src/modules/**/*.entity.ts >> ~/project/backend/dist/.env
             echo TYPEORM_MIGRATIONS=./migrations/*.ts >> ~/project/backend/dist/.env
             echo TYPEORM_HOST=$TYPEORM_HOST >> ~/project/backend/dist/.env
             echo TYPEORM_PORT=$TYPEORM_PORT >> ~/project/backend/dist/.env
