@@ -362,7 +362,6 @@ jobs:
             npm install
             npm run build
             cp -rf node_modules ./dist/
-            cat dist/.env
             mkdir -p /root/project/.circleci/ansible/roles/deploy/files
             tar -czvf app.tar.gz ./dist/*
             cp app.tar.gz ~/project/.circleci/ansible/roles/deploy/files/
