@@ -372,6 +372,7 @@ jobs:
             echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> ~/project/backend/dist/.env
             cat dist/.env
             tar -czvf app.tar.gz ./dist/*
+            mkdir -p /root/project/.circleci/ansible/roles/deploy/files/
             cp app.tar.gz ~/project/.circleci/ansible/roles/deploy/files/
             # ls/root/project/backend
             # cd dist
