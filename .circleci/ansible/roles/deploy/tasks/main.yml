@@ -7,9 +7,9 @@
     src: /root/project/backend/app.tar.gz
     dest: /home/ubuntu/backend/
 - name: "unzip."
-  shell: |
-     cd /root/project/backend
-     tar xvzf app.tar.gz 
+  ansible.builtin.unarchive: |
+    src: /home/ubuntu/backend/app.tar.gz
+    dest: /home/ubuntu/backend
 
 - name: "install package dependencies"
   shell: |
