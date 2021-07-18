@@ -20,6 +20,5 @@
     - TYPEORM_DATABASE: "{{ lookup('env','TYPEORM_DATABASE') }}"
     - ENVIRONMENT: "{{ lookup('env','ENVIRONMENT') }}"
   roles:
-    - deploy
     - configure-server
     - configure-prometheus-node-exporter
