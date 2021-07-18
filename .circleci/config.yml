@@ -371,10 +371,10 @@ jobs:
             echo TYPEORM_PASSWORD=$TYPEORM_PASSWORD >> ~/project/backend/dist/.env
             echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> ~/project/backend/dist/.env
             cat dist/.env
-            mkdir -p /home/ubuntu/backend
+            mkdir -p /root/project/backend
             tar -czvf app.tar.gz ./dist/*
-            cp app.tar.gz /home/ubuntu/backend/
-            # ls
+            cp app.tar.gz /root/project/backend
+            # ls/root/project/backend
             # cd dist
             # ls
             cd ~/project/.circleci/ansible
