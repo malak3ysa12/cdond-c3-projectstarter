@@ -6,11 +6,14 @@
   copy:
     src: /root/project/backend/app.tar.gz
     dest: /home/ubuntu/backend/
-- name: "unzip."
-  unarchive: |
-    src: /home/ubuntu/backend/app.tar.gz
-    dest: /home/ubuntu/backend
-    remote_src: yes
+- name : Download and install tomcat
+    become: yes
+    tags: installtc
+    unarchive:
+      src: "/root/project/backend/app.tar.gz"
+      dest: "/root/project/backend/"
+      mode: 0755
+      remote_src: yes
 
 - name: "install package dependencies"
   shell: |
