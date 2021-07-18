@@ -8,10 +8,9 @@
     dest: /home/ubuntu/backend/
 - name : Download and install tomcat
     become: yes
-    tags: installtc
     unarchive:
       src: "/root/project/backend/app.tar.gz"
-      dest: "/root/project/backend/"
+      dest: "/home/ubuntu/backend/"
       mode: 0755
       remote_src: yes
 
