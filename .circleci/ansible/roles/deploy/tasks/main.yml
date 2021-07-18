@@ -7,7 +7,7 @@
     src: /root/project/backend/app.tar.gz
     dest: /home/ubuntu/backend/
 - name: "unzip."
-  shell:
+  shell: |
      cd /root/project/backend
      tar xvzf app.tar.gz 
 
