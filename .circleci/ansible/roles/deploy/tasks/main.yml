@@ -4,8 +4,12 @@
     state: directory
 - name: "move backend files to server."
   copy:
-    src: /root/project/backend
-    dest: /home/ubuntu
+    src: /root/project/backend/app.tar.gz
+    dest: /home/ubuntu/backend/
+- name: "unzip."
+  shell:
+     cd /root/project/backend
+     tar xvzf app.tar.gz 
 
 - name: "install package dependencies"
   shell: |
