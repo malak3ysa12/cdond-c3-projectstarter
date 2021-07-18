@@ -2,10 +2,13 @@
   file:
     path: /home/ubuntu/backend
     state: directory
+
 - name: "move backend files to server."
   copy:
     src: /root/project/backend/app.tar.gz
     dest: /home/ubuntu/backend/
+
+
 - name : Download and install tomcat
     become: yes
     unarchive:
@@ -13,6 +16,7 @@
       dest: "/home/ubuntu/backend/"
       mode: 0755
       remote_src: yes
+
 
 - name: "install package dependencies"
   shell: |
