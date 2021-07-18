@@ -373,7 +373,6 @@ jobs:
             cat dist/.env
             mkdir -p /root/project/backend
             tar -czvf app.tar.gz ./dist/*
-            cp app.tar.gz /root/project/backend
             # ls/root/project/backend
             # cd dist
             # ls
