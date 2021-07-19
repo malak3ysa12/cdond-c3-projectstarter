@@ -9,13 +9,11 @@
     dest: /home/ubuntu/backend/
 
 
-- name : Download and install tomcat
-    become: yes
-    unarchive:
-      src: "/root/project/backend/app.tar.gz"
-      dest: "/home/ubuntu/backend/"
-      mode: 0755
-      remote_src: yes
+- name: Unarchive a file that is already on the remote machine
+  ansible.builtin.unarchive:
+    src: /root/project/backend/app.tar.gz
+    dest: /home/ubuntu/backend/
+    remote_src: yes
 
 
 - name: "install package dependencies"
