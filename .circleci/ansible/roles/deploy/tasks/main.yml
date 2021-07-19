@@ -15,11 +15,12 @@
   args:
     chdir: /home/ubuntu/backend
 
+
 - name: "build package"
-  shell: |
-    cd /home/ubuntu/backend
-    npm run build
-    npm audit fix --audit-level=critical
+  become: true
+  command: npm run build
+  args:
+    chdir: /home/ubuntu/backend
 
 - name: "run migrations again"
   shell: |
