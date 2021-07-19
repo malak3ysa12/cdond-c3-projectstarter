@@ -23,9 +23,11 @@
     chdir: /home/ubuntu/backend
 
 - name: "run migrations again"
-  shell: |
-    cd /home/ubuntu/backend
-    npm run migrations
+  become: true
+  command: npm run migrations
+  args:    
+    chdir: /home/ubuntu/backend
+   
 
 - name: Executing node
   become: true
