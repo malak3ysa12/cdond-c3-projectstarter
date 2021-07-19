@@ -10,13 +10,10 @@
 
 
 - name: "install package dependencies"
-  shell: |
-    cd /home/ubuntu/backend    
-    ls -la
-    printenv
-    npm install
-    npm run prestart:prod
-
+  become: true
+  command: npm install
+  args:
+    chdir: /home/ubuntu/backend
 
 - name: "build package"
   shell: |
