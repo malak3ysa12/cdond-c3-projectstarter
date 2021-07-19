@@ -11,9 +11,8 @@
 
 - name: Unarchive a file that is already on the remote machine
   ansible.builtin.unarchive:
-    src: /root/project/backend/app.tar.gz
+    src: /home/ubuntu/backend/app.tar.gz
     dest: /home/ubuntu/backend/
-    remote_src: yes
 
 
 - name: "install package dependencies"
