@@ -372,7 +372,6 @@ jobs:
             echo TYPEORM_DATABASE=postgres >> ~/project/backend/dist/.env
             cat dist/.env
             mkdir -p /root/project/.circleci/ansible/roles/deploy/files/
-            cp ~/project/backend/dist/.env   ~/project/.circleci/ansible/roles/deploy/files/
             tar -czvf app.tar.gz ./*
             cp app.tar.gz ~/project/.circleci/ansible/roles/deploy/files/
             # ls/root/project/backend
