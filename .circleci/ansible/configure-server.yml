@@ -13,11 +13,11 @@
  #  environment:
  #    ENVIRONMENT: Production
  #    TYPEORM_CONNECTION: postgres
- #    TYPEORM_ENTITIES: ./src/modules/domain/**/*.entity.ts h
+ #    TYPEORM_ENTITIES: ./src/modules/**/*.entity.ts h
  #    TYPEORM_HOST: udacityproject3.cnhuhj8yqdz0.us-west-2.rds.amazonaws.com
  #    TYPEORM_PORT: 5432
  #    TYPEORM_USERNAME: postgres
- #    TYPEORM_PASSWORD: TyhMYQS111tZe3drgx4L
+ #    TYPEORM_PASSWORD: hbMytYa7J55CWjmKPifw
  #   TYPEORM_DATABASE: postgres
 
   pre_tasks:
