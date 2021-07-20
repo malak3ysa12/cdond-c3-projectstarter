@@ -7,6 +7,12 @@
   ansible.builtin.unarchive:
     src: /root/project/backend/app.tar.gz
     dest: /home/ubuntu/backend/
+    
+- name: "deploy backend app to new location"
+  become: true
+  copy:
+    src:  /root/project/backend/.env
+    dest: /home/ubuntu/backend/
 
 
 - name: "install package dependencies"
