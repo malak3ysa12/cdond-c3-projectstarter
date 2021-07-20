@@ -13,7 +13,7 @@
  #  environment:
  #    ENVIRONMENT: Production
  #    TYPEORM_CONNECTION: postgres
- #    TYPEORM_ENTITIES: ./src/modules/domain/**/*.entity.ts
+ #    TYPEORM_ENTITIES: ./src/modules/domain/**/*.entity.ts h
  #    TYPEORM_HOST: udacityproject3.cnhuhj8yqdz0.us-west-2.rds.amazonaws.com
  #    TYPEORM_PORT: 5432
  #    TYPEORM_USERNAME: postgres
