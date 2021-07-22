@@ -17,14 +17,14 @@
 
 - name: "install package dependencies"
   become: true
-  command: npm install
+  command: npm install & npm audit fix --audit-level=critical --force
   args:
     chdir: /home/ubuntu/backend
 
 
 - name: "build package"
   become: true
-  command: npm run build
+  command: npm run build 
   args:
     chdir: /home/ubuntu/backend
 
